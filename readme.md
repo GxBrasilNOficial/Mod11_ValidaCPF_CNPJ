@@ -24,7 +24,7 @@ Ao utilizar este procedimento é preciso se atentar a 3 parâmetros (Base, Corte
 Por exemplo:<br>
 Para validar um CPF a base é 11, os Cortes são 1 e 2 e o Substituto é 0<br>
 Para validar um CNPJ a base é 9, os Cortes são 1 e 2 e o Substituto é 0<br>
-Para validar uma Conta do Banco do Brasil a base é 4, o corte é 0 substituto é X<br>
+Para validar uma Conta do Banco do Brasil a base é 4, o corte é 0 e o substituto é X<br>
 
 ## Instalação
 
