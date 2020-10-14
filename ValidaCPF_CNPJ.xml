@@ -178,8 +178,8 @@ If &SemDigitos.StartsWith('000') And VAl(&SemDigitos.Substring(9,4)) > 300
 EndIf
 
 /* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CNPJ OS CORTES SÃO 1 e 2 */
+&Corte.Add(0)
 &Corte.Add(1)
-&Corte.Add(2)
 
 /* CALCULA O PRIMEIRO DIGITO DO CNPJ. */
 Calcula_Mod11.Call(&SemDigitos, 9, &Corte, '0', &Digito, &retBoolean)
@@ -309,8 +309,8 @@ If &SemDigitos.IsMatch(&ListRegex)
 EndIf
 
 /* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CPF OS CORTES SÃO 1 e 2 */
+&Corte.Add(0)
 &Corte.Add(1)
-&Corte.Add(2)
 
 /* CALCULA O PRIMEIRO DIGITO DO CPF. */
 Calcula_Mod11.Call(&SemDigitos, 11, &Corte, '0', &Digito, &retBoolean)
