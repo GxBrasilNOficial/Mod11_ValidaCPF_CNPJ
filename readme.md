@@ -22,8 +22,8 @@ Para aceitar o CPF 000.000.005-15 remova da lista o valor 000000005
 - Permite a validação de todo e qualquer código que utilize o algoritmo Mod11 para composição dos dígitos.
 Ao utilizar este procedimento é preciso se atentar a 3 parâmetros (Base, Corte e Substituto), eles são necessários para que a procedure possa atende a diferentes situações, estas informações deveram ser obtidas junto a fonte do código a ser validado.<br>
 Por exemplo:<br>
-Para validar um CPF a base é 11, os Cortes são 1 e 2 e o Substituto é 0<br>
-Para validar um CNPJ a base é 9, os Cortes são 1 e 2 e o Substituto é 0<br>
+Para validar um CPF a base é 11, os Cortes são 0 e 1 e o Substituto é 0<br>
+Para validar um CNPJ a base é 9, os Cortes são 0 e 1 e o Substituto é 0<br>
 Para validar uma Conta do Banco do Brasil a base é 4, o corte é 0 e o substituto é X<br>
 
 ## Instalação
@@ -65,6 +65,7 @@ EndIf
 
 * 0.1.0
     * Primeira versão funcional [@gtorrezani](https://github.com/gtorrezani)
+    * Correção aplicada nos valores de cortes em (14/10/2020 13:58)
 
 
 ## Meta
