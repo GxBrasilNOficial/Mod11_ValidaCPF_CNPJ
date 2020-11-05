@@ -99,7 +99,7 @@ EndEvent
 
 ## Histórico de lançamentos
 
-* 0.1.0
+* 0.1.2
     * Primeira versão funcional [@gtorrezani](https://github.com/gtorrezani)
     * Correção aplicada nos valores de cortes em (14/10/2020 13:58)
     * Inclusão de exemplos sobre como Validar os Formatos. (05/11/2020 10:09)
