@@ -39,25 +39,61 @@ Genexus 16 ou Superior:
 ## Exemplo de uso
 
 ```
-If Valida_CPF(&NumeroDoCPF)
+Event 'Validar Digito CPF'
+	
+	If Valida_CPF.Udp(&CPF)
 		
-	Msg('CPF Válido')
-
-Else
-
-	Msg('CPF Inválido')
-
-EndIf
-
-If Valida_CNPJ(&NumeroDoCNPJ)
+		Msg('CPF Válido')
 		
-	Msg('CNPJ Válido')
+	Else
+		
+		Msg('CPF Inválido')
+		
+	EndIf
+	
+Endevent
 
-Else
+Event 'Validar Digito CNPJ'
+	
+	If Valida_CNPJ.Udp(&CNPJ)
+		
+		Msg('CNPJ Válido')
+		
+	Else
+		
+		Msg('CNPJ Inválido')
+		
+	EndIf
+	
+Endevent
 
-	Msg('CNPJ Inválido')
+Event 'Validar Formato CPF'
+	
+	If &CPF.IsMatch(ExpressaoRegular.CPF)
+		
+		Msg('Formato CPF Válido')
+		
+	Else
+		
+		Msg('Formato CPF Inválido')
+		
+	EndIf
+	
+EndEvent
 
-EndIf
+Event 'Validar Formato CNPJ'
+	
+	If &CNPJ.IsMatch(ExpressaoRegular.CNPJ)
+		
+		Msg('Formato CNPJ Válido')
+		
+	Else
+		
+		Msg('Formato CNPJ Inválido')
+		
+	EndIf	
+	
+EndEvent
 	
 ```
 
