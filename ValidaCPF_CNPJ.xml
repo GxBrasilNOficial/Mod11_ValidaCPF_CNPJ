@@ -1,25 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ExportFile>
   <KMW>
     <MajorVersion>4</MajorVersion>
     <MinorVersion>0</MinorVersion>
-    <Build>140712</Build>
+    <Build>145000</Build>
   </KMW>
-  <Source kb="28019abc-adcd-4979-9289-56a4baf1354c" username="NOTEMWS\MWS" UNCPath="\\NOTEMWS\D$\Projetos\Matias\ValidaCPF">
-    <Version guid="e3ec5047-5924-4fc1-8f6f-1bc3ea97c1d3" name="ValidaCPF" />
+  <Source kb="7ffccff9-9f7e-4d0d-afde-8f54e34fee2a" username="DESKTOP-V37LMUG\gtorr" UNCPath="\\DESKTOP-V37LMUG\C$\Projetos\Matias\DevUC">
+    <Version guid="ac6d856e-aa93-49d2-a133-4b53590f0528" name="DevUC" />
   </Source>
   <Objects>
-    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="NOTEMWS\MWS" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-07-01T16:54:36.0000000Z" checksum="cc0e55ca1015e4a9ef33cd755977764d" fullyQualifiedName="Calcula_Mod11" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="48110e20-dead-4a40-bebb-cd5f9df60623" name="Calcula_Mod11" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Valida ou Retorna Digito">
+    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T12:09:18.0000000Z" checksum="fd9ec3a52f1b4807bee9c03cbb2d9183" fullyQualifiedName="Mod11_ValidaCPF_CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="9883931b-bfef-4eb3-8a19-c4bafeaa72a3" name="Mod11_ValidaCPF_CNPJ" type="00000000-0000-0000-0000-000000000008" description="Mod11_Valida CPF_CNPJ">
+      <Properties><Property><Name>Name</Name><Value>Mod11_ValidaCPF_CNPJ</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+    </Object>
+    <Object parentGuid="9883931b-bfef-4eb3-8a19-c4bafeaa72a3" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T12:11:06.0000000Z" checksum="20e9c9eb0030507efcaa27e6381f4fda" fullyQualifiedName="Calcula_Modulo11" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="48110e20-dead-4a40-bebb-cd5f9df60623" name="Calcula_Modulo11" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Valida ou Retorna Digito" parent="Mod11_ValidaCPF_CNPJ" parentType="00000000-0000-0000-0000-000000000008">
       <Part type="528d1c06-a9c2-420d-bd35-21dca83f12ff">
-        <Source><![CDATA[/* **************************************************************************************************
- *  DESCRIPTION: CALCULA DIGITO DO MODULO 11.
- *  REFERENCES : N/A
- *
- *  HISTORY:
- *  DATE        	PROGRAMMER      			Issue# - Description
- *  -----------  	----------------------		----------------------------
- *  01-07-2020      GUSTAVO MATIAS    			Created
- ***************************************************************************************************/
+        <Source><![CDATA[/*************************************************************************************************************
+**  DESCRIÇÃO:  CALCULA DIGITO DO MODULO 11.
+**  REFERÊNCIAS: N/A
+**
+**  HISTÓRICO:
+**  DATA        	PROGRAMADOR      			DESCRIÇÃO
+**  -----------  	----------------------		----------------------------
+**  01-07-2020      GUSTAVO MATIAS    			CRIAÇÃO
+*************************************************************************************************************/
 
 /* SETA VALORES INICIAIS */
 &PosicaoInversa = &ValorEntrada.Length()
@@ -28,11 +31,11 @@
 
 /* LOOP DE ACORDO COM O TAMANHO DA STRING RECEBIDA */
 For &Index = 1 To &ValorEntrada.Length()
-
+	
 	&ValorAtual    = &ValorEntrada.CharAt(&PosicaoInversa)
 	&auxCalc 	     = &ValorAtual.ToNumeric() * &Peso
 	&Resultado    += &auxCalc
-
+	
 	//!INCREMENTOS E CONDIÇÕES.
 	&Peso  += 1
 	&Peso   = IIF(&Peso > &Base, 2, &Peso)
@@ -40,8 +43,9 @@ For &Index = 1 To &ValorEntrada.Length()
 	
 EndFor
 
-//!RECUPERA O RESTO DA DIVISÃO E VALIDA EXCEÇÕES.
+/* RECUPERA O RESTO DA DIVISÃO E VALIDA EXCEÇÕES. */
 &Resto = Mod(&Resultado, 11)
+
 If &Resto In &Corte
 	
 	&Digito = &Substituto
@@ -133,32 +137,32 @@ EndIf
       <Part type="babf62c5-0111-49e9-a1c3-cc004d90900a">
         <Properties />
       </Part>
-      <Properties><Property><Name>Name</Name><Value>Calcula_Mod11</Value></Property><Property><Name>Description</Name><Value>Valida ou Retorna Digito</Value></Property><Property><Name>IntegratedSecurityPermissionPrefix</Name><Value>calcMod11</Value></Property><Property><Name>CommitOnExit</Name><Value>No</Value></Property><Property><Name>SPC_WARNINGS_DISABLED</Name><Value>spc0096 spc0107 spc0142 spc0217 spc0087 spc0217</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      <Properties><Property><Name>Name</Name><Value>Calcula_Modulo11</Value></Property><Property><Name>Description</Name><Value>Valida ou Retorna Digito</Value></Property><Property><Name>IntegratedSecurityPermissionPrefix</Name><Value>calcMod11</Value></Property><Property><Name>CommitOnExit</Name><Value>No</Value></Property><Property><Name>SPC_WARNINGS_DISABLED</Name><Value>spc0096 spc0107 spc0142 spc0217 spc0087 spc0217</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
     </Object>
-    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="NOTEMWS\MWS" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-07-01T17:09:50.0000000Z" checksum="13a8299cd3a13c10903024b1ee3a4ce1" fullyQualifiedName="Valida_CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="37fd0613-7b5d-1e03-ce47-46c87f3f7a8a" name="Valida_CNPJ" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Verifica Validade CNPJ">
+    <Object parentGuid="9883931b-bfef-4eb3-8a19-c4bafeaa72a3" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T12:09:25.0000000Z" checksum="39126dae044d6dfa2a749a8c33321bfa" fullyQualifiedName="Valida_CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="37fd0613-7b5d-1e03-ce47-46c87f3f7a8a" name="Valida_CNPJ" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Verifica Validade CNPJ" parent="Mod11_ValidaCPF_CNPJ" parentType="00000000-0000-0000-0000-000000000008">
       <Part type="528d1c06-a9c2-420d-bd35-21dca83f12ff">
-        <Source><![CDATA[/* **************************************************************************************************
- *  DESCRIPTION: VALIDA CNPJ.
- *  REFERENCES : N/A
- *
- *  HISTORY:
- *  DATE        	PROGRAMMER      			Issue# - Description
- *  -----------  	----------------------		----------------------------
- *  01-07-2020      GUSTAVO MATIAS    			Created
- ***************************************************************************************************/
+        <Source><![CDATA[/*************************************************************************************************************
+**  DESCRIÇÃO:  VALIDA CNPJ.
+**  REFERÊNCIAS: N/A
+**
+**  HISTÓRICO:
+**  DATA        	PROGRAMADOR      			DESCRIÇÃO
+**  -----------  	----------------------		----------------------------
+**  01-07-2020      GUSTAVO MATIAS    			CRIAÇÃO
+*************************************************************************************************************/
 
 /* REMOVE MASCARAS. */
-&SemMascaras = &CNPJ.ReplaceRegEx(!'[^\d]', '')
+&SemMascaras = &CNPJ.ReplaceRegEx(ExpressaoRegular.ApenasNumeros, '')
 
 /* REMOVE OS DIGITOS. */
-&SemDigitos = &SemMascaras.Substring(1,12)
+&SemDigitos  = &SemMascaras.Substring(1,12)
 
 /* CRITICA SE A BASE DO CNPJ POSSUI TODOS OS NUMEROS IGUAIS DESDE QUE <> 0. */
-If Not &SemDigitos.StartsWith(!'00000000') And &SemDigitos.Substring(1,8).IsMatch('^(.)\1*$')
-
+If Not &SemDigitos.StartsWith(!'00000000') And &SemDigitos.Substring(1,8).IsMatch(ExpressaoRegular.RepeticaoTotal)
+	
 	&Valido = FALSE
 	Return
-
+	
 EndIf
 
 /* CRITICA SE A ORDEM DO CNPJ = 0. */
@@ -170,25 +174,25 @@ If &SemDigitos.EndsWith('0000')
 EndIf
 
 /* CRITICA ESTOURO DE ORDEM. */
-If &SemDigitos.StartsWith('000') And VAl(&SemDigitos.Substring(9,4)) > 300
+If &SemDigitos.StartsWith(!'000') And VAl(&SemDigitos.Substring(9,4)) > 300
 	
 	&Valido = FALSE
 	Return
 	
 EndIf
 
-/* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CNPJ OS CORTES SÃO 1 e 2 */
+/* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CNPJ OS CORTES SÃO 0 e 1 */
 &Corte.Add(0)
 &Corte.Add(1)
 
 /* CALCULA O PRIMEIRO DIGITO DO CNPJ. */
-Calcula_Mod11.Call(&SemDigitos, 9, &Corte, '0', &Digito, &retBoolean)
+Calcula_Modulo11.Call(&SemDigitos, 9, &Corte, !'0', &Digito)
 &ComApenasUmDosDigitos = &SemDigitos + &Digito.ToString().Trim()
 
 /* CALCULA O SEGUNDO DIGITO DO CNPJ. */
-Calcula_Mod11.Call(&ComApenasUmDosDigitos, 9, &Corte, '0', &Digito, &retBoolean)
+Calcula_Modulo11.Call(&ComApenasUmDosDigitos, 9, &Corte, !'0', &Digito)
 
-/* COMPOE O CNPJ FINAL. */
+/* REMONTA O CNPJ FINAL. */
 &Completo = &ComApenasUmDosDigitos + &Digito.ToString().Trim()
 
 /* REALIZA A VALIDAÇÃO. */
@@ -237,10 +241,6 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 9, &Corte, '0', &Digito, &retBoolean)
           <Documentation />
           <Properties><Property><Name>Name</Name><Value>Digito</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:Character</Value></Property><Property><Name>Length</Name><Value>20</Value></Property><Property><Name>AttMaxLen</Name><Value>20</Value></Property></Properties>
         </Variable>
-        <Variable Name="retBoolean">
-          <Documentation />
-          <Properties><Property><Name>Name</Name><Value>retBoolean</Value></Property><Property><Name>idIsAutoDefinedVariable</Name><Value>False</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:Boolean</Value></Property></Properties>
-        </Variable>
         <Variable Name="SemDigitos">
           <Documentation />
           <Properties><Property><Name>Name</Name><Value>SemDigitos</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:Character</Value></Property><Property><Name>Length</Name><Value>12</Value></Property><Property><Name>AttMaxLen</Name><Value>12</Value></Property></Properties>
@@ -270,34 +270,34 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 9, &Corte, '0', &Digito, &retBoolean)
       </Part>
       <Properties><Property><Name>Name</Name><Value>Valida_CNPJ</Value></Property><Property><Name>Description</Name><Value>Verifica Validade CNPJ</Value></Property><Property><Name>IntegratedSecurityPermissionPrefix</Name><Value>PChkCNPJ</Value></Property><Property><Name>CommitOnExit</Name><Value>No</Value></Property><Property><Name>SPC_WARNINGS_DISABLED</Name><Value>spc0096 spc0107 spc0142 spc0217</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
     </Object>
-    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="NOTEMWS\MWS" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-07-01T16:54:22.0000000Z" checksum="5e5f39cb0bd88fe102e6aa7601dcb314" fullyQualifiedName="Valida_CPF" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="80397c88-4d53-3134-e25d-9ff8fe4b0198" name="Valida_CPF" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Calcula cpf">
+    <Object parentGuid="9883931b-bfef-4eb3-8a19-c4bafeaa72a3" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T12:36:33.0000000Z" checksum="b46170b8c16eae76f1532c40fd9ed8cd" fullyQualifiedName="Valida_CPF" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="80397c88-4d53-3134-e25d-9ff8fe4b0198" name="Valida_CPF" type="84a12160-f59b-4ad7-a683-ea4481ac23e9" description="Calcula cpf" parent="Mod11_ValidaCPF_CNPJ" parentType="00000000-0000-0000-0000-000000000008">
       <Part type="528d1c06-a9c2-420d-bd35-21dca83f12ff">
-        <Source><![CDATA[/* **************************************************************************************************
- *  DESCRIPTION: VALIDA O CPF.
- *  REFERENCES : N/A
- *
- *  HISTORY:
- *  DATE        	PROGRAMMER      			Issue# - Description
- *  -----------  	----------------------		----------------------------
- *  09-01-2020      GUSTAVO MATIAS    			Created
- ***************************************************************************************************/
+        <Source><![CDATA[/*************************************************************************************************************
+**  DESCRIÇÃO:  VALIDA CPF.
+**  REFERÊNCIAS: N/A
+**
+**  HISTÓRICO:
+**  DATA        	PROGRAMADOR      			DESCRIÇÃO
+**  -----------  	----------------------		----------------------------
+**  01-07-2020      GUSTAVO MATIAS    			CRIAÇÃO
+*************************************************************************************************************/
 
 /* CPFs IGNORADOS PELO SEU NEGÓCIO (OBSERVE QUE ALGUMAS NORMATIZAÇÕES EXIGEM A ACEITAÇÃO DOS MESMOS) */
-&ListCPF = '000000001|000000002|000000003|000000004|000000005|000000006|000000007|000000008|000000009'
-&ListRegex = '(?<!@)('+&ListCPF+')'
+&ListCPF 	 = '000000001|000000002|000000003|000000004|000000005|000000006|000000007|000000008|000000009'
+&ListRegex = Format(ExpressaoRegular.ListaDeOpcoes, &ListCPF)
 
 /* REMOVE MASCARAS. */
-&SemMascaras = &CPF.ReplaceRegEx(!'[^\d]', '')
+&SemMascaras = &CPF.ReplaceRegEx(ExpressaoRegular.ApenasNumeros, !'')
 
 /* REMOVE OS DIGITOS. */
-&SemDigitos = &SemMascaras.Substring(1,9)
+&SemDigitos  = &SemMascaras.Substring(1,9)
 
 /* CRITICA SE A BASE DO CPF POSSUI TODOS OS NUMEROS IGUAIS. */
-If &SemDigitos.IsMatch('^(.)\1*$')
-
+If &SemDigitos.IsMatch(ExpressaoRegular.RepeticaoTotal)
+	
 	&Valido = FALSE
 	Return
-
+	
 EndIf
 
 /* CONSISTE EXCEÇÕES. */
@@ -308,16 +308,16 @@ If &SemDigitos.IsMatch(&ListRegex)
 	
 EndIf
 
-/* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CPF OS CORTES SÃO 1 e 2 */
+/* CRIA UMA COLEÇÃO DE CORTES PARA O MÓDULO 11 (PARA O CPF OS CORTES SÃO 0 e 1 */
 &Corte.Add(0)
 &Corte.Add(1)
 
 /* CALCULA O PRIMEIRO DIGITO DO CPF. */
-Calcula_Mod11.Call(&SemDigitos, 11, &Corte, '0', &Digito, &retBoolean)
+Calcula_Modulo11.Call(&SemDigitos, 10, &Corte, !'0', &Digito)
 &ComApenasUmDosDigitos = &SemDigitos + &Digito.ToString().Trim()
 
 /* CALCULA O SEGUNDO DIGITO DO CPF. */
-Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean)
+Calcula_Modulo11.Call(&ComApenasUmDosDigitos, 11, &Corte, !'0', &Digito)
 
 /* REMONTA O CPF FINAL. */
 &Completo = &ComApenasUmDosDigitos + &Digito.ToString().Trim()
@@ -371,10 +371,6 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
           <Documentation />
           <Properties><Property><Name>Name</Name><Value>ListRegex</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:LongVarChar</Value></Property></Properties>
         </Variable>
-        <Variable Name="retBoolean">
-          <Documentation />
-          <Properties><Property><Name>Name</Name><Value>retBoolean</Value></Property><Property><Name>idIsAutoDefinedVariable</Name><Value>False</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:Boolean</Value></Property></Properties>
-        </Variable>
         <Variable Name="SemDigitos">
           <Documentation />
           <Properties><Property><Name>Name</Name><Value>SemDigitos</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:Character</Value></Property><Property><Name>Length</Name><Value>9</Value></Property><Property><Name>AttMaxLen</Name><Value>9</Value></Property></Properties>
@@ -405,7 +401,87 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
       </Part>
       <Properties><Property><Name>Name</Name><Value>Valida_CPF</Value></Property><Property><Name>Description</Name><Value>Calcula cpf</Value></Property><Property><Name>CommitOnExit</Name><Value>No</Value></Property><Property><Name>SPC_WARNINGS_DISABLED</Name><Value>spc0096 spc0107 spc0142 spc0217</Value></Property><Property><Name>TRNCMT</Name><Value>NO</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
     </Object>
-    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="NOTEMWS\MWS" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-07-01T13:23:41.0000000Z" checksum="138a81fa3b2be1cf699182d3f7179a51" fullyQualifiedName="CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="2725a770-cfcd-4330-9cf9-8361749ce593" name="CNPJ" type="00972a17-9975-449e-aab1-d26165d51393" description="CNPJ">
+    <Object parentGuid="9883931b-bfef-4eb3-8a19-c4bafeaa72a3" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T12:13:38.0000000Z" checksum="b2596c679f4b33ec056d73a29184a2a6" fullyQualifiedName="Exemplos_CPF_CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="28f25fd4-cd9c-4cc4-a4bf-2c4d1ef3ad8f" name="Exemplos_CPF_CNPJ" type="c9584656-94b6-4ccd-890f-332d11fc2c25" description="Exemplos_CPF_CNPJ" parent="Mod11_ValidaCPF_CNPJ" parentType="00000000-0000-0000-0000-000000000008">
+      <Part type="d24a58ad-57ba-41b7-9e6e-eaca3543c778">
+        <Source><![CDATA[<GxMultiForm rootId="1" version="html:15.0.0;layout:16.0.0"><Form id="1" type="layout"><detail><layout><table controlName="MainTable" tableType="Responsive"><row><cell><data attribute="&amp;CPF" /></cell><cell><action controlName="ValidarCPF" onClickEvent="'Validar Digito CPF'" /></cell><cell><action controlName="ValidarFormatoCPF" onClickEvent="'Validar Formato CPF'" /></cell></row><row><cell><data attribute="&amp;CNPJ" /></cell><cell><action controlName="ValidarCNPJ" onClickEvent="'Validar Digito CNPJ'" /></cell><cell><action controlName="ValidarFormatoCNPJ" onClickEvent="'Validar Formato CNPJ'" /></cell></row></table></layout></detail></Form></GxMultiForm>]]></Source>
+        <Properties><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      </Part>
+      <Part type="9b0a32a3-de6d-4be1-a4dd-1b85d3741534">
+        <Properties />
+      </Part>
+      <Part type="c44bd5ff-f918-415b-98e6-aca44fed84fa">
+        <Source><![CDATA[Event 'Validar Digito CPF'
+	
+	If Valida_CPF.Udp(&CPF)
+		
+		Msg('CPF Válido')
+		
+	Else
+		
+		Msg('CPF Inválido')
+		
+	EndIf
+	
+Endevent
+
+Event 'Validar Digito CNPJ'
+	
+	If Valida_CNPJ.Udp(&CNPJ)
+		
+		Msg('CNPJ Válido')
+		
+	Else
+		
+		Msg('CNPJ Inválido')
+		
+	EndIf
+	
+Endevent
+
+Event 'Validar Formato CPF'
+	
+	If &CPF.IsMatch(ExpressaoRegular.CPF)
+		
+		Msg('Formato CPF Válido')
+		
+	Else
+		
+		Msg('Formato CPF Inválido')
+		
+	EndIf
+	
+EndEvent
+
+Event 'Validar Formato CNPJ'
+	
+	If &CNPJ.IsMatch(ExpressaoRegular.CNPJ)
+		
+		Msg('Formato CNPJ Válido')
+		
+	Else
+		
+		Msg('Formato CNPJ Inválido')
+		
+	EndIf	
+	
+EndEvent
+]]></Source>
+        <Properties><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      </Part>
+      <Part type="763f0d8b-d8ac-4db4-8dd4-de8979f2b5b9">
+        <Properties />
+      </Part>
+      <Part type="e4c4ade7-53f0-4a56-bdfd-843735b66f47">
+        <Variable Name="CPF">
+          <Documentation />
+          <Properties><Property><Name>Name</Name><Value>CPF</Value></Property><Property><Name>idBasedOn</Name><Value>Domain:CPF</Value></Property></Properties>
+        </Variable>
+        <Variable Name="CNPJ">
+          <Documentation />
+          <Properties><Property><Name>Name</Name><Value>CNPJ</Value></Property><Property><Name>idBasedOn</Name><Value>Domain:CNPJ</Value></Property></Properties>
+        </Variable>
+        <Properties><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      </Part>
       <Part type="ad3ca970-19d0-44e1-a7b7-db05556e820c">
         <Help>
           <HelpItem>
@@ -418,7 +494,37 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
       <Part type="babf62c5-0111-49e9-a1c3-cc004d90900a">
         <Properties />
       </Part>
-      <Properties><Property><Name>Name</Name><Value>CNPJ</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:VarChar</Value></Property><Property><Name>Length</Name><Value>14</Value></Property><Property><Name>AttMaxLen</Name><Value>14</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      <Properties><Property><Name>Name</Name><Value>Exemplos_CPF_CNPJ</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+    </Object>
+    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T11:42:11.0000000Z" checksum="382d246beee753202e613abfb84750b7" fullyQualifiedName="CNPJ" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="2725a770-cfcd-4330-9cf9-8361749ce593" name="CNPJ" type="00972a17-9975-449e-aab1-d26165d51393" description="CNPJ">
+      <Part type="ad3ca970-19d0-44e1-a7b7-db05556e820c">
+        <Help>
+          <HelpItem>
+            <Language>88313f43-5eb2-0000-0028-e8d9f5bf9588-English</Language>
+            <Content />
+          </HelpItem>
+        </Help>
+        <Properties><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      </Part>
+      <Part type="babf62c5-0111-49e9-a1c3-cc004d90900a">
+        <Properties />
+      </Part>
+      <Properties><Property><Name>Name</Name><Value>CNPJ</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:VarChar</Value></Property><Property><Name>Length</Name><Value>18</Value></Property><Property><Name>AttMaxLen</Name><Value>18</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+    </Object>
+    <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="DESKTOP-V37LMUG\gtorr" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-10-20T11:46:54.0000000Z" checksum="e617673f9dedac5ef8630f9b74437ae1" fullyQualifiedName="ExpressaoRegular" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="48acb1e0-0933-4dfc-87a2-a0a7d2072dfe" name="ExpressaoRegular" type="00972a17-9975-449e-aab1-d26165d51393" description="Expressao Regular">
+      <Part type="ad3ca970-19d0-44e1-a7b7-db05556e820c">
+        <Help>
+          <HelpItem>
+            <Language>88313f43-5eb2-0000-0028-e8d9f5bf9588-English</Language>
+            <Content />
+          </HelpItem>
+        </Help>
+        <Properties><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
+      </Part>
+      <Part type="babf62c5-0111-49e9-a1c3-cc004d90900a">
+        <Properties />
+      </Part>
+      <Properties><Property><Name>Name</Name><Value>ExpressaoRegular</Value></Property><Property><Name>ATTCUSTOMTYPE</Name><Value>bas:VarChar</Value></Property><Property><Name>Length</Name><Value>256</Value></Property><Property><Name>AttMaxLen</Name><Value>256</Value></Property><Property><Name>IDEnumDefinedValues</Name><Value>^((\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\|(\\s*))$, Email, Email; ^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})\|([0-9]{11}))$, CPF, CPF; ^(([0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2})\|([0-9]{14}))$, CNPJ, CNPJ; ^(([0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2})\|([0-9]{11}))$\|^(([0-9]{2}.[0-9]{3}.[0-9]{3}/[0-9]{4}-[0-9]{2})\|([0-9]{14}))$, CPForCNPJ, CPFor CNPJ; ^(.)\\1*$, RepeticaoTotal, Todo o conteúdo deve ser igual; [^\\d], ApenasNumeros, Apenas Números; (?&lt;!@)(%1), ListaDeOpcoes, O %1 Deve ser substituido pela Lista</Value></Property><Property><Name>IsDefault</Name><Value>False</Value></Property></Properties>
     </Object>
     <Object parentGuid="afa47377-41d5-4ae8-9755-6f53150aa361" user="NOTEMWS\MWS" versionDate="0001-01-01T00:00:00.0000000" lastUpdate="2020-07-01T13:23:35.0000000Z" checksum="c349c973aaf180852c04d84edba73e66" fullyQualifiedName="CPF" moduleGuid="afa47377-41d5-4ae8-9755-6f53150aa361" guid="f946c778-b506-4aba-9e65-71d82eac170f" name="CPF" type="00972a17-9975-449e-aab1-d26165d51393" description="CPF">
       <Part type="ad3ca970-19d0-44e1-a7b7-db05556e820c">
@@ -437,6 +543,9 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
     </Object>
   </Objects>
   <Dependencies>
+    <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Object" Id="00000000-0000-0000-0000-000000000008">
+      <Properties Name="Folder" PackageName="GenexusBL" />
+    </Reference>
     <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Object" Id="84a12160-f59b-4ad7-a683-ea4481ac23e9">
       <Properties Name="Procedure" PackageName="GenexusBL" />
     </Reference>
@@ -461,6 +570,15 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
     <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Part" Id="babf62c5-0111-49e9-a1c3-cc004d90900a">
       <Properties Name="Documentation" PackageName="GenexusBL" />
     </Reference>
+    <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Object" Id="c9584656-94b6-4ccd-890f-332d11fc2c25">
+      <Properties Name="Web Panel" PackageName="GenexusBL" />
+    </Reference>
+    <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Part" Id="d24a58ad-57ba-41b7-9e6e-eaca3543c778">
+      <Properties Name="Web Form" PackageName="GenexusBL" />
+    </Reference>
+    <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Part" Id="c44bd5ff-f918-415b-98e6-aca44fed84fa">
+      <Properties Name="Events" PackageName="GenexusBL" />
+    </Reference>
     <Reference Package="3ea7e1c6-b849-4df9-931a-070171a8a2f0" Type="Object" Id="00972a17-9975-449e-aab1-d26165d51393">
       <Properties Name="Domain" PackageName="GenexusBL" />
     </Reference>
@@ -470,10 +588,31 @@ Calcula_Mod11.Call(&ComApenasUmDosDigitos, 11, &Corte, '0', &Digito, &retBoolean
       <Guid>afa47377-41d5-4ae8-9755-6f53150aa361</Guid>
     </ObjectIdentity>
     <ObjectIdentity Type="ecececec-dfe0-4a57-ae8f-c6e31b0dcbc0" Name="Default" parent="">
-      <Guid>fa6a7560-f8ea-40ea-ae37-3aa033567fe4</Guid>
+      <Guid>55cebad2-ba60-4458-80de-1765ea979113</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="c804fdbd-7c0b-440d-8527-4316c92649a6" Name="Carmine" parent="">
+      <Guid>c3d9279b-69fb-4f4a-920e-62a13a536d87</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="c9584656-94b6-4ccd-890f-332d11fc2c25" Name="RwdMasterPage" parent="">
+      <Guid>db065b00-da5c-4e48-b5ad-2066d2251139</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="00000000-0000-0000-0000-000000000008" Name="Web" parent="">
+      <Guid>a676350a-d3a1-4850-9f51-4cef8688b224</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="00000000-0000-0000-0000-000000000008" Name="GeneXus" parent="">
+      <Guid>f3365d5c-c45f-46b4-ae99-66123fcdb5b6</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="d4876646-98dd-419b-8c1c-896f83c48368" Name="Form" parent="">
+      <Guid>d5ef9926-a55b-5eb1-ac93-2211cfeeb656</Guid>
     </ObjectIdentity>
     <ObjectIdentity Type="d4876646-98dd-419b-8c1c-896f83c48368" Name="Attribute" parent="">
       <Guid>7f83da99-bc71-5230-bf17-0352ce27c129</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="d4876646-98dd-419b-8c1c-896f83c48368" Name="Button" parent="">
+      <Guid>abd2de3e-1c96-5681-b52b-bbe33c0dca49</Guid>
+    </ObjectIdentity>
+    <ObjectIdentity Type="d4876646-98dd-419b-8c1c-896f83c48368" Name="Table" parent="">
+      <Guid>784008a4-3c1e-563a-9723-453ef4d698c9</Guid>
     </ObjectIdentity>
   </ObjectsIdentityMapping>
 </ExportFile>
